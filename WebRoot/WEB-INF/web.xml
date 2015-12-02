@@ -16,7 +16,11 @@
   <!-- DispatcherServlet, Spring MVC的核心 -->
    <context-param>
         <param-name>springmvcDispatcher</param-name>
-        <param-value>/WEB-INF/dispatcher-servlet.xml</param-value><!--也可以放在 /WEB-INF/mvc-dispatcher-servlet.xml  -->
+        <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+         <!-- 
+        	classpath:mvc-dispatcher-servlet.xml 访问不到这个文件
+        	/WEB-INF/dispatcher-servlet.xml 只能放在WEB-INF下，并且命名为dispatcher-servlet.xml，默认加载这个dispatcher-servlet.xml
+         -->
     </context-param>
     <servlet>
         <servlet-name>dispatcher</servlet-name>
