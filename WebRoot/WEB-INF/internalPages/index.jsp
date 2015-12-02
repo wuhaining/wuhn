@@ -9,20 +9,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>登陆页面</title>
-    
+    <title>管理主页面</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
 
   </head>
   
   <body>
-    <form action="<%=path%>/login" method="post">
-    	<p>
-    		账号：<input type="text" name="name" />
-    	</p>
-    	<p>
-    		密码：<input type="text" name="password"/>
-    	</p>
-    	<input type="submit" value="提交" />
-    </form>
+   	 管理主页面<br>
   </body>
 </html>
