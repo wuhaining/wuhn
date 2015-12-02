@@ -995,4 +995,19 @@ $.validator.addMethod("ziprange", function(value, element) {
 	return this.optional(element) || /^90[2-5]\d\{2\}-\d{4}$/.test(value);
 }, "Your ZIP-code must be in the range 902xx-xxxx to 905xx-xxxx");
 
+
+/***********自定义新属性***************/
+//邮政编码验证   
+$.validator.addMethod("isZipCode", function(value, element) {   
+  var tel = /^[0-9]{6}$/;
+  return this.optional(element) || (tel.test(value));
+}, "请正确填写您的邮政编码");
+
+//手机号码验证   
+$.validator.addMethod("mobile", function(value, element) {   
+  var tel = /^1[34578]\d{9}$/;
+  return this.optional(element) || (tel.test(value));
+}, "请正确填写您的手机号码");
+
+
 }));
