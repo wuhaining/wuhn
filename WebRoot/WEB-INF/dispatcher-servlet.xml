@@ -79,4 +79,19 @@
      </property>   
     </bean>  
     -->
+    
+    <!-- 注册拦截器 -->
+    <!-- 局部拦截 -->
+    <mvc:interceptors>
+    	<mvc:interceptor>
+    		<mvc:mapping path="/helloWorld"/>
+    		<bean class="com.wuhn.interceptor.TestInterceptor"></bean>
+    	</mvc:interceptor>
+    </mvc:interceptors>
+    
+    <!-- 全局拦截
+    <mvc:interceptors>   	
+    	<bean class="com.wuhn.interceptor.TestInterceptor"></bean>
+    </mvc:interceptors>
+     -->
 </beans>

@@ -23,5 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <a href="<%=path%>/helloWorld">测试</a>
     <a href="<%=path%>/externalPages/login/login.jsp">登陆</a>
+    
   </body>
 </html>
