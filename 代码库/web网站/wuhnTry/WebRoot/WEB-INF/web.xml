@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <display-name>springmvc_4.2.3</display-name>	
+  
+  
+  <!-- Spring应用上下文， 理解层次化的ApplicationContext -->
+  <context-param>
+ 		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value><!--也可以放在 /WEB-INF/applicationContext.xml  -->
+  </context-param>
+  
+  <!-- DispatcherServlet, Spring MVC的核心 -->
+   <context-param>
+        <param-name>springmvcDispatcher</param-name>
+        <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+         <!-- 
+        	classpath:mvc-dispatcher-servlet.xml 访问不到这个文件
+        	/WEB-INF/dispatcher-servlet.xml 只能放在WEB-INF下，并且命名为dispatcher-servlet.xml，默认加载这个dispatcher-servlet.xml
+         -->
+    </context-param>
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>springmvcDispatcher</param-name>
+            <param-value></param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <!-- 监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
+    <!-- 字符集 过滤器 -->  
+    <filter>  
+        <filter-name>CharacterEncodingFilter</filter-name>  
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>  
+        <init-param>  
+            <param-name>encoding</param-name>  
+            <param-value>UTF-8</param-value>  
+        </init-param>  
+        <init-param>  
+            <param-name>forceEncoding</param-name>  
+            <param-value>true</param-value>  
+        </init-param>  
+    </filter>  
+    <filter-mapping>  
+        <filter-name>CharacterEncodingFilter</filter-name>  
+        <url-pattern>/*</url-pattern>  
+    </filter-mapping>  
+    
+    <!-- 首页 -->
+    <welcome-file-list>
+	    <welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+  	
+  	<!-- 配置全局错误页面 -->
+  	<error-page>
+    	<location>/error</location>
+	</error-page>
+	<error-page>  
+        <error-code>403</error-code>  
+        <location>/WEB-INF/internalPages/error/403.jsp</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>404</error-code>  
+        <location>/WEB-INF/internalPages/error/404.jsp</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>405</error-code>  
+        <location>/WEB-INF/internalPages/error/405.jsp</location>  
+    </error-page>  
+    <error-page>  
+        <error-code>500</error-code>  
+        <location>/WEB-INF/internalPages/error/500.jsp</location>  
+    </error-page> 
+</web-app>
