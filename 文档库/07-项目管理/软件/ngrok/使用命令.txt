@@ -1,0 +1,4 @@
+Linux：./ngrok -config ngrok.cfg -subdomain sunny 80 
+Windows：ngrok.exe -config ngrok.cfg -subdomain sunny 80
+意为将本地的80端口链接到sunny.ngrok.cc上,Windows在命令提示符窗口先进入到客户端软件目录执行 
+     参数解读：-config是选择配置文件 -subdomain是自定义域名前缀
