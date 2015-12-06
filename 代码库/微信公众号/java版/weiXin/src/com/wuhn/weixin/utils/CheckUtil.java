@@ -28,8 +28,8 @@ public class CheckUtil {
 		String temp = DigestUtils.sha1Hex(content.toString());
 		
 		//3. 开发者获得加密后的字符串可与signature对比，标识该请求来源于微信
-		System.out.println("signature:"+signature);
-		System.out.println("temp:"+temp);
+		//System.out.println("signature:"+signature);
+		//System.out.println("temp:"+temp);
 		return temp.equals(signature);
 	}
 }

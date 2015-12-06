@@ -7,7 +7,7 @@ import java.util.List;
  * @创建时间 2015-12-04
  * @功能 回复图文消息 MsgType=news
  * **/
-public class NewsMessage {
+public class NewsMessage extends BaseMessage{
 	private String ArticleCount;//图文消息个数，限制为10条以内
 	private List<News> Articles;//多条图文消息信息，默认第一个item为大图,注意，如果图文数超过10，则将会无响应
 	public String getArticleCount() {

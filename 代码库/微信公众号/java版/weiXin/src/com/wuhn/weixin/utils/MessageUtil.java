@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.wuhn.weixin.bean.weixin.News;
+import com.wuhn.weixin.bean.weixin.NewsMessage;
 import com.wuhn.weixin.bean.weixin.TextMessage;
 import javax.servlet.http.HttpServletRequest;
 
@@ -50,7 +52,7 @@ public class MessageUtil {
 	}
 	
 	/**
-	 * @功能 将文本消息对象转为xml  java转xml
+	 * @功能 将文本消息对象转为xml  java转xml 实用xstream-1.4.7.jar
 	 * @param TextMessage textMessage
 	 * @return String
 	 * **/
@@ -59,5 +61,17 @@ public class MessageUtil {
 		xstream.alias("xml", textMessage.getClass());
 		return xstream.toXML(textMessage);
 		
+	}
+	
+	/**
+	 * @功能 将图文消息对象转为xml  java转xml 实用xstream-1.4.7.jar
+	 * @param NewsMessage newsMessage
+	 * @return String
+	 * **/
+	public static String newsMessageToXml(NewsMessage newsMessage){
+		XStream xstream = new XStream();
+		xstream.alias("xml", newsMessage.getClass());
+		xstream.alias("item", new News().getClass());
+		return xstream.toXML(newsMessage);	
 	}
 }

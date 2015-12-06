@@ -1,7 +1,11 @@
 package com.wuhn.weixin.utils;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import com.wuhn.weixin.bean.weixin.News;
+import com.wuhn.weixin.bean.weixin.NewsMessage;
 import com.wuhn.weixin.bean.weixin.TextMessage;
 
 
@@ -13,9 +17,9 @@ import com.wuhn.weixin.bean.weixin.TextMessage;
 public class SendMessageUtil {
 	
 	/**
-	 * 统一返回text格式
+	 * 统一返回text格式	文本
 	 * **/
-	public static String initText(String toUserName,String fromUserName,String content){	
+	public static String initTextMessage(String toUserName,String fromUserName,String content){	
 		TextMessage text = new TextMessage();
 		text.setFromUserName(toUserName);//开发者微信号
 		text.setToUserName(fromUserName);//接收方帐号（收到的OpenID）
@@ -31,8 +35,35 @@ public class SendMessageUtil {
 	public static String menuText(){
 		StringBuffer stringBuffer = new StringBuffer();
 		stringBuffer.append("欢迎您的关注，请按菜单提示进行操作：\n\n");
-		stringBuffer.append("1、美女\n");
-		stringBuffer.append("2、喵星人\n");
+		stringBuffer.append("1、文本\n");
+		stringBuffer.append("2、图文\n");
 		return stringBuffer.toString();	
 	}
+	
+	/**
+	 * 统一返回news格式	图文
+	 * **/
+	public static String initNewsMessage(String toUserName,String fromUserName){
+		String message = null;
+		List<News> newsList = new ArrayList<News>();
+		NewsMessage newsMessage = new NewsMessage();
+		
+		News news_one = new News();
+		news_one.setTitle("图文标题");//图文消息标题
+		news_one.setDescription("图文描述，此处省略500字。。。");//图文消息描述
+		news_one.setPicUrl("http://wuhn.ngrok.cc/weiXin/images/cat.jpg");//图片链接，支持JPG、PNG格式，较好的效果为大图360*200，小图200*200
+		news_one.setUrl("www.baidu.com");//点击图文消息跳转链接
+		newsList.add(news_one);
+		
+		newsMessage.setToUserName(fromUserName);
+		newsMessage.setFromUserName(toUserName);
+		newsMessage.setCreateTime(String.valueOf(new Date().getTime()));
+		newsMessage.setMsgType(SendMessageConstant.MESSAGE_NEWS);
+		newsMessage.setArticleCount(String.valueOf(newsList.size()));
+		newsMessage.setArticles(newsList);
+		
+		message = MessageUtil.newsMessageToXml(newsMessage);
+		return message;
+	}	
+
 }

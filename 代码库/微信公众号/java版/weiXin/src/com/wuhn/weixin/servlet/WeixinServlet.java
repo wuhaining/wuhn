@@ -65,18 +65,20 @@ public class WeixinServlet extends HttpServlet{
 			
 			String message = null;
 			if(ReceiveMessageConstant.MESSAGE_TEXT.equals(msgType)){
-				TextMessage text = new TextMessage();
-				text.setFromUserName(toUserName);//开发者微信号
-				text.setToUserName(fromUserName);//接收方帐号（收到的OpenID）
-				text.setMsgType("text");//text
-				text.setCreateTime(String.valueOf(new Date().getTime()));//消息创建时间 （整型）
-				text.setContent("您发送的消息是："+content);//回复的消息内容（换行：在content中能够换行，微信客户端就支持换行显示）
-				message = MessageUtil.textMessageToXml(text);
+				if("1".equals(content)){
+					message = SendMessageUtil.initTextMessage(toUserName, fromUserName, "文本");
+				}
+				else if("2".equals(content)){
+					message = SendMessageUtil.initNewsMessage(toUserName, fromUserName);
+				}
+				else{
+					message = SendMessageUtil.initTextMessage(toUserName, fromUserName, content);
+				}				
 			}
 			else if(ReceiveMessageConstant.MESSAGE_EVENT.equals(msgType)){
 				String eventType = map.get("Event");
 				if(ReceiveMessageConstant.MESSAGE_EVENT_SUBSCRIBE.equals(eventType)){
-					message = SendMessageUtil.initText(toUserName, fromUserName, SendMessageUtil.menuText());
+					message = SendMessageUtil.initTextMessage(toUserName, fromUserName, SendMessageUtil.menuText());
 				}
 			}
 			
