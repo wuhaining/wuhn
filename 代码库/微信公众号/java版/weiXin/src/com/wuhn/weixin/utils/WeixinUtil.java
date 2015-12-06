@@ -15,6 +15,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
+import com.wuhn.weixin.bean.weixin.AccessToken;
+
 import net.sf.json.JSONObject;
 
 /**
@@ -26,7 +28,10 @@ public class WeixinUtil {
 	//这两个参数可在【开发者中心】中找到
 	private static final String APPID="wxd36bcdcb32caeea5";//appid 第三方用户唯一凭证
 	private static final String APPSECRET="d15d900eccb38cac3db883e9d3f71e2a ";//secret 第三方用户唯一凭证密钥，即appsecret
+	//固定
+	private static final String GRANT_TYPE="client_credential";//grant_type 获取access_token填写client_credential
 	
+	private static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";//
 	
 	/**
 	 * @功能 Get方法获取access_token
@@ -59,7 +64,7 @@ public class WeixinUtil {
 		CloseableHttpClient  httpClient = HttpClients.createDefault();
 		HttpPost httpPost = new HttpPost(url);
 		JSONObject jsonObject = null;
-		httpPost.setEntity(new StringEntity(outStr, ContentType.create("text/plain", "UTF-8")));
+		httpPost.setEntity(new StringEntity(outStr,"UTF-8"));
 		try {
 			CloseableHttpResponse response = httpClient.execute(httpPost);
 			String result = EntityUtils.toString(response.getEntity(), "UTF-8");
@@ -71,5 +76,20 @@ public class WeixinUtil {
 		}
 		
 		return jsonObject;
+	}
+	
+	
+	/**
+	 * @功能 获取access_token
+	 * **/
+	public static AccessToken getAccessToken(){
+		AccessToken accessToken = new AccessToken();
+		String url = ACCESS_TOKEN_URL.replace("APPID", APPID).replace("APPSECRET", APPSECRET);
+		JSONObject jsonObject = doGetStr(url);
+		if(jsonObject != null){
+			accessToken.setAccess_token(jsonObject.getString("access_token"));
+			accessToken.setExpires_in(jsonObject.getInt("expires_in"));
+		}
+		return accessToken;
 	}
 }
