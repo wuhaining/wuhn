@@ -27,7 +27,7 @@ import net.sf.json.JSONObject;
 public class WeixinUtil {
 	//这两个参数可在【开发者中心】中找到
 	private static final String APPID="wxd36bcdcb32caeea5";//appid 第三方用户唯一凭证
-	private static final String APPSECRET="d15d900eccb38cac3db883e9d3f71e2a ";//secret 第三方用户唯一凭证密钥，即appsecret
+	private static final String APPSECRET="d15d900eccb38cac3db883e9d3f71e2a";//secret 第三方用户唯一凭证密钥，即appsecret
 	//固定
 	private static final String GRANT_TYPE="client_credential";//grant_type 获取access_token填写client_credential
 	
