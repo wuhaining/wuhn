@@ -21,8 +21,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <a href="<%=path%>/jsp/01.jsp" target="_blank">上传和下载01</a>
+    <a href="<%=path%>/jsp/01.jsp" target="_blank">上传01</a>
     <br>
-    <a href="<%=path%>/jsp/02.jsp" target="_blank">上传和下载02</a>
+    <a href="<%=path%>/jsp/02.jsp" target="_blank">下载02</a>
   </body>
 </html>

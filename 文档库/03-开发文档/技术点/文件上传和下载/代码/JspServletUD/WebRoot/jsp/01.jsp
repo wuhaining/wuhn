@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP '01.jsp' starting page</title>
+    <title>上传</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	<form action="<%=path%>/UploadServlet.do" method="post" enctype="multipart/form-data">
   		请选择图片：<input id="myfile" name="myfile" type="file"/>
-  		<input type="submit" value="提交"  />
+  		<input type="submit" value="提交"  />${result}
   	</form>
   	
   	
