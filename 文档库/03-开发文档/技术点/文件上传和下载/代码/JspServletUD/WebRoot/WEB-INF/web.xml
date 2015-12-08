@@ -4,7 +4,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-<<<<<<< HEAD
   <display-name></display-name>
   <servlet>
     <description>This is the description of my J2EE component</description>
@@ -19,7 +18,6 @@
     <servlet-class>com.wuhn.scxz.servlet.DownloadServlet</servlet-class>
   </servlet>
 
-
   <servlet-mapping>
     <servlet-name>UploadServlet</servlet-name>
     <url-pattern>/UploadServlet.do</url-pattern>
@@ -27,19 +25,7 @@
   <servlet-mapping>
     <servlet-name>DownloadServlet</servlet-name>
     <url-pattern>/DownloadServlet.do</url-pattern>
-=======
-  <display-name></display-name>
-  <servlet>
-    <description>This is the description of my J2EE component</description>
-    <display-name>This is the display name of my J2EE component</display-name>
-    <servlet-name>UploadServlet</servlet-name>
-    <servlet-class>com.wuhn.scxz.servlet.UploadServlet</servlet-class>
-  </servlet>
 
-  <servlet-mapping>
-    <servlet-name>UploadServlet</servlet-name>
-    <url-pattern>/UploadServlet.do</url-pattern>
->>>>>>> 27dba74dbd82aa639786a2a93ab720f2515528f8
   </servlet-mapping>	
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
