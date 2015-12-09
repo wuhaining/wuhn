@@ -19,30 +19,66 @@ public class Struts2UploadAction extends ActionSupport {
     private String uploadFileName;//FileName : String - the actual name of the file uploaded (not the HTML name)
     private String result;//返回信息
     
-	public String getResult() {
-		return result;
+	
+    
+    public File getUpload() {
+		return upload;
 	}
-	public void setResult(String result) {
-		this.result = result;
-	}
+
+
+
 	public void setUpload(File upload) {
 		this.upload = upload;
 	}
+
+
+
+	public String getUploadContentType() {
+		return uploadContentType;
+	}
+
+
+
 	public void setUploadContentType(String uploadContentType) {
 		this.uploadContentType = uploadContentType;
 	}
+
+
+
+	public String getUploadFileName() {
+		return uploadFileName;
+	}
+
+
+
 	public void setUploadFileName(String uploadFileName) {
 		this.uploadFileName = uploadFileName;
 	}
-    
-    @Override
+
+
+
+	public String getResult() {
+		return result;
+	}
+
+
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
+
+
+	@Override
     public String execute() throws Exception{
     	//设置存储路径
-    	String path = ServletActionContext.getServletContext().getRealPath("/") + "images";
+    	String path = ServletActionContext.getServletContext().getRealPath("/images");
     	File file = new File(path);
     	if(!file.exists()){
     		file.mkdir();
     	}
+    	System.out.println("uploadFileName:"+uploadFileName);
+    	System.out.println("文件是否存在："+file.exists());
     	//保存文件
 		FileUtils.copyFile(upload, new File(file, uploadFileName));
 		result = "上传成功！";
