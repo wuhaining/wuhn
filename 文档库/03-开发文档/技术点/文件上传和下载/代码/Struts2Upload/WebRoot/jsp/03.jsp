@@ -4,12 +4,13 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>批量上传</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -18,13 +19,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+
   </head>
   
   <body>
-    <a target="_blank" href="<%=path%>/jsp/01.jsp">上传01</a>
-    <br>
-    <a target="_blank" href="<%=path%>/jsp/02.jsp">下载02</a>
-    <br>
-    <a target="_blank" href="<%=path%>/jsp/03.jsp">批量上传03</a>
+    <form action="<%=path%>/upload.action" method="post" enctype="multipart/form-data">
+    		上传文件1：<input type="file" name="image"/>
+    		上传文件2：<input type="file" name="image"/>
+    		上传文件3：<input type="file" name="image"/>
+    		<input type="submit" value="提交"/>${result}
+    	</form>
   </body>
 </html>

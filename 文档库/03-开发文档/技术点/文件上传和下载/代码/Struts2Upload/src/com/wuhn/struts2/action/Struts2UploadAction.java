@@ -14,73 +14,58 @@ import com.opensymphony.xwork2.ActionSupport;
  * @功能 上传
  * **/
 public class Struts2UploadAction extends ActionSupport {
-	private File upload;// File - the actual File
-    private String uploadContentType;//ContentType : String - the content type of the file
-    private String uploadFileName;//FileName : String - the actual name of the file uploaded (not the HTML name)
+	private File image; //上传的文件  
+	private String imageFileName; //文件名称 要注意前缀要和file的变量一样
+	private String imageContentType; //文件类型 要注意前缀要和file的变量一样
+
     private String result;//返回信息
     
-	
-    
-    public File getUpload() {
-		return upload;
+	public File getImage() {
+		return image;
 	}
 
-
-
-	public void setUpload(File upload) {
-		this.upload = upload;
+	public void setImage(File image) {
+		this.image = image;
 	}
 
-
-
-	public String getUploadContentType() {
-		return uploadContentType;
+	public String getImageFileName() {
+		return imageFileName;
 	}
 
-
-
-	public void setUploadContentType(String uploadContentType) {
-		this.uploadContentType = uploadContentType;
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName = imageFileName;
 	}
 
-
-
-	public String getUploadFileName() {
-		return uploadFileName;
+	public String getImageContentType() {
+		return imageContentType;
 	}
 
-
-
-	public void setUploadFileName(String uploadFileName) {
-		this.uploadFileName = uploadFileName;
+	public void setImageContentType(String imageContentType) {
+		this.imageContentType = imageContentType;
 	}
-
-
 
 	public String getResult() {
 		return result;
 	}
 
-
-
 	public void setResult(String result) {
 		this.result = result;
 	}
-
-
 
 	@Override
     public String execute() throws Exception{
     	//设置存储路径
     	String path = ServletActionContext.getServletContext().getRealPath("/images");
-    	File file = new File(path);
-    	if(!file.exists()){
-    		file.mkdir();
+    	File localFile = new File(path);
+    	if(!localFile.exists()){
+    		localFile.mkdir();
     	}
-    	System.out.println("uploadFileName:"+uploadFileName);
-    	System.out.println("文件是否存在："+file.exists());
+    	System.out.println("image:"+image);
+    	System.out.println("imageFileName:"+imageFileName);
+    	System.out.println("imageContentType:"+imageContentType);
+    	System.out.println("文件是否存在："+image.exists());
     	//保存文件
-		FileUtils.copyFile(upload, new File(file, uploadFileName));
+		FileUtils.copyFile(image, new File(localFile, imageFileName));
 		result = "上传成功！";
     	
         return SUCCESS;
