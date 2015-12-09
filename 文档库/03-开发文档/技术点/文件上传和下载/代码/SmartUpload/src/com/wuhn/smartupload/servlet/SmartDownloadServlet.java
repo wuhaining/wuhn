@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.jspsmart.upload.SmartUpload;
 import com.jspsmart.upload.SmartUploadException;
 
+/**
+ * @author wuhn
+ * @创建时间 2015-12-08
+ * @功能 SmartUpload 下载 
+ * **/
 public class SmartDownloadServlet extends HttpServlet {
 
 	/**
