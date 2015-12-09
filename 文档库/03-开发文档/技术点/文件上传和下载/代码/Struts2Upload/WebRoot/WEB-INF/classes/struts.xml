@@ -9,8 +9,17 @@
     <constant name="struts.devMode" value="true" />
 
     <package name="default" namespace="/" extends="struts-default">
-
-        
+		<action name="upload" class="com.wuhn.struts2.action.Struts2UploadAction">
+			<result name="success">/jsp/01.jsp</result>
+			<result name="input">/jsp/error.jsp</result>
+			
+			<!-- 配置拦截器限制上传文件类型及大小 -->
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/png,image/gif,image/jpeg</param>
+				<param name="maximumSize">1024*1024</param> 
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
     </package>
 	
 	<!-- 

@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE>
 <html>
   <head>
@@ -23,6 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    ERROR
+    	错误：<s:fielderror></s:fielderror>
   </body>
 </html>

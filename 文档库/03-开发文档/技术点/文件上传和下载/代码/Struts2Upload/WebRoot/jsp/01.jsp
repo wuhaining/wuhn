@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE>
 <html>
   <head>
@@ -14,15 +14,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="keywords" content="keyword1.,keyword2,keyword3">
+	
 	<meta http-equiv="description" content="This is my page">
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
   </head>
-  
+  	
   <body>
-    
+    	<form action="<%=path%>/upload.action" method="post" enctype="multipart/form-data">
+    		上传文件：<input type="file" name="filename"/>
+    		<input type="submit" value="提交"/>${result}
+    	</form>
   </body>
 </html>
