@@ -44,6 +44,40 @@
 			<!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
+		
+		
+		<!-- 批量上传 -->
+		<action name="batchUpload" class="com.wuhn.struts2.action.BatchStruts2UploadAction">
+			<result name="success">/jsp/03.jsp</result>
+			<result name="input">/jsp/error.jsp</result>
+			
+			<!-- 配置拦截器限制上传文件类型及大小 -->
+			<interceptor-ref name="fileUpload">
+				<!-- 文件过滤 -->
+				<param name="allowedTypes">image/png,image/gif,image/jpeg</param>
+				<!-- 文件大小, 以字节为单位 -->
+				<param name="maximumSize">10240000</param> 
+			</interceptor-ref>
+			<!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		
+		
+		
+		<!-- 下载 -->
+		<action name="download" class="com.wuhn.struts2.action.Struts2DownloadAction">
+			<!-- <param name="inputPath">images/20151026165425.png</param> -->
+			<result name="success" type="stream">		   
+			  <param name="contentType">application/octet-stream</param>
+			  <param name="inputName">inputStream</param>
+			  <param name="contentDisposition">attachment;filename="${downloadFileName}"</param>
+			  <param name="bufferSize">1024</param>
+			</result>			
+		</action>
+		
+			
+		
     </package>
 	
 	<!-- 

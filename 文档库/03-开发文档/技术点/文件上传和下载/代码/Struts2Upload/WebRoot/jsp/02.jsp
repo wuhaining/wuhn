@@ -23,6 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    
+    下载文件<a href="<%=path%>/download.action?filename=20151026165425.png">文件</a>
   </body>
 </html>

@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <form action="<%=path%>/upload.action" method="post" enctype="multipart/form-data">
+    <form action="<%=path%>/batchUpload.action" method="post" enctype="multipart/form-data">
     		上传文件1：<input type="file" name="image"/>
     		上传文件2：<input type="file" name="image"/>
     		上传文件3：<input type="file" name="image"/>

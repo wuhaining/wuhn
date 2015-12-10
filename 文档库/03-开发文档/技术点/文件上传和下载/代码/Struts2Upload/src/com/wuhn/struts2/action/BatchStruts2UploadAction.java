@@ -13,7 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
  * @创建时间 2015-12-10
  * @功能 批量上传
  * **/
-public class BatchStruts2DownloadAction extends ActionSupport {
+public class BatchStruts2UploadAction extends ActionSupport {
 	private List<File> image; //上传的文件  
 	private List<String> imageFileName; //文件名称 要注意前缀要和file的变量一样
 	private List<String> imageContentType; //文件类型 要注意前缀要和file的变量一样
