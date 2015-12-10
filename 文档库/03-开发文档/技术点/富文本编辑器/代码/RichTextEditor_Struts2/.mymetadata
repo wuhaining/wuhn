@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="RichTextEditor_Struts2"
+  id="myeclipse.1449719198454"
+  context-root="/RichTextEditor_Struts2"
+  j2ee-spec="6.0"
+  archive="RichTextEditor_Struts2.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
