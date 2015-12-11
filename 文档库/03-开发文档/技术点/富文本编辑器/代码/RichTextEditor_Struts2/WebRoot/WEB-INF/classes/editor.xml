@@ -5,11 +5,16 @@
 	
 <struts>
 	<package name="editor" namespace="/editor/" extends="struts-default">
+<<<<<<< HEAD
 		<!-- 
 		<action name="editorInfo" class="com.wuhn.editor.action.CkeditorAction">
 			<result name="success">/show.jsp</result>
 		</action>
 		 -->
+=======
+		
+	
+>>>>>>> 7660d6c100feea6d2d328a4f65196a7741318f9a
 	</package>
 
 </struts>

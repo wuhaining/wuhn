@@ -28,7 +28,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <h1>富文本编辑器</h1>
     
+<<<<<<< HEAD
     <form action="<%=path%>/editor/editorInfo.action" method="post">
+=======
+    <form action="" method="post">
+>>>>>>> 7660d6c100feea6d2d328a4f65196a7741318f9a
     	<textarea rows="10" cols="80" id="editor" name="editor" class="ckeditor">请输入...</textarea>
     	<input type="submit" value="保存"/>
     </form>
