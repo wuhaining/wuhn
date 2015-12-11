@@ -9,28 +9,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>富文本编辑器</title>
-    <meta charset="utf-8">
+    <title>My JSP 'show.jsp' starting page</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	
-	<!--ckeditor  -->
-	<script type="text/javascript" src="<%=path%>/ckeditor/ckeditor.js"></script>		
-	<!--ckefinder  -->
-	<script type="text/javascript" src="<%=path%>/ckfinder/ckfinder.js"></script>		
-	
-	
+	<!--
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	-->
+
   </head>
   
   <body>
-    <h1>富文本编辑器</h1>
-    
-    <form action="<%=path%>/editor/editorInfo.action" method="post">
-    	<textarea rows="10" cols="80" id="editor" name="editor" class="ckeditor">请输入...</textarea>
-    	<input type="submit" value="保存"/>
-    </form>
+    <h1>富文本编辑器内容</h1>
+    ${editor};
   </body>
 </html>

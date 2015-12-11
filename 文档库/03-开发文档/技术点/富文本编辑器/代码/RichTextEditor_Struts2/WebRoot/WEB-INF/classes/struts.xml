@@ -6,9 +6,11 @@
 <struts>
 
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
-    <constant name="struts.devMode" value="true" /><!-- 该属性指定需要Struts2处理的请求后缀，该属性的默认值是action，即所有匹配*.action的请求都由Struts2处理。
-        如果用户需要指定多个请求后缀，则多个后缀之间以英文逗号（,）隔开。 -->
+    <constant name="struts.devMode" value="true" />
+    <!-- 该属性指定需要Struts2处理的请求后缀，该属性的默认值是action，即所有匹配*.action的请求都由Struts2处理。
+        如果用户需要指定多个请求后缀，则多个后缀之间以英文逗号（,）隔开。
     <constant name="struts.action.extension" value="action" />
+     -->
     <!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 -->
     <constant name="struts.serve.static.browserCache" value="false" />
     <!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
@@ -28,9 +30,29 @@
 	 <!-- 国际化 app_zh_CN.properties --> 
 	<constant name="struts.custom.i18n.resources" value="app"></constant> 
 	 
-	 <!-- 
-    <package name="default" namespace="/" extends="struts-default"></package>
-	 -->
+	 <!-- -->
+    <package name="default" namespace="/" extends="struts-default">
+    	<action name="test" class="com.wuhn.editor.action.TestAction">
+    		<result name="success">/index.jsp</result>
+    	</action>
+    	
+    	<!-- 信息展示 -->
+    	<action name="editorInfo" class="com.wuhn.editor.action.CkeditorAction">
+			<result name="success">/show.jsp</result>
+		</action>
+		
+		<!-- 附件下载 -->
+		<action name="download" class="com.wuhn.editor.action.Struts2DownloadAction">
+			<result name="success" type="stream">		   
+			  <param name="contentType">application/octet-stream</param>
+			  <param name="inputName">inputStream</param>
+			  <param name="contentDisposition">attachment;filename="${downloadFileName}"</param>
+			  <param name="bufferSize">1024</param>
+			</result>			
+		</action>
+    </package>
+	 
+	 
 	 
     <include file="editor.xml"/>
 

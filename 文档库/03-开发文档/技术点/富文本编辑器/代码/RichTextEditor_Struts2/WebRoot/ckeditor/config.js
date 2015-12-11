@@ -12,7 +12,7 @@ CKEDITOR.editorConfig = function( config ) {
 	config.language =  "zh-cn" ; 
 	config.toolbar = 'Full';
     config.height = 300;
-    config.image_previewText = " ";
+    config.image_previewText = " ";//图片预览文字替换
 
 	config.toolbarGroups = [
 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
