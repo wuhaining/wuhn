@@ -6,14 +6,16 @@ package com.wuhn.weixin.bean.weixin;
  * @功能 回复视频消息  MsgType=video
  * **/
 public class VideoMessage extends BaseMessage{
-	private String Video;//视频
+	private Video Video;//视频
 
-	public String getVideo() {
+	public Video getVideo() {
 		return Video;
 	}
 
-	public void setVideo(String video) {
+	public void setVideo(Video video) {
 		Video = video;
 	}
+
+	
 	
 }

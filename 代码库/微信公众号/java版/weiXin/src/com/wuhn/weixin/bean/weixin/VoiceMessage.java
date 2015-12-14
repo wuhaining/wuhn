@@ -6,15 +6,17 @@ package com.wuhn.weixin.bean.weixin;
  * @功能 回复语音消息  MsgType=voice
  * **/
 public class VoiceMessage extends BaseMessage{
-	private String Voice;//语音
+	private Voice Voice;//语音
 
-	public String getVoice() {
+	public Voice getVoice() {
 		return Voice;
 	}
 
-	public void setVoice(String voice) {
+	public void setVoice(Voice voice) {
 		Voice = voice;
 	}
+
+	
 	
 	
 }

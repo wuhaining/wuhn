@@ -65,11 +65,20 @@ public class WeixinServlet extends HttpServlet{
 			
 			String message = null;
 			if(ReceiveMessageConstant.MESSAGE_TEXT.equals(msgType)){
-				if("1".equals(content)){
+				if("？".equals(content)||"?".equals(content)){
+					message = SendMessageUtil.initTextMessage(toUserName, fromUserName, SendMessageUtil.menuText());
+				}
+				else if("1".equals(content)){
 					message = SendMessageUtil.initTextMessage(toUserName, fromUserName, "文本");
 				}
 				else if("2".equals(content)){
 					message = SendMessageUtil.initNewsMessage(toUserName, fromUserName);
+				}
+				else if("3".equals(content)){
+					message = SendMessageUtil.initImageMessage(toUserName, fromUserName);
+				}
+				else if("4".equals(content)){
+					message = SendMessageUtil.initMusicMessage(toUserName, fromUserName);
 				}
 				else{
 					message = SendMessageUtil.initTextMessage(toUserName, fromUserName, content);

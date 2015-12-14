@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.wuhn.weixin.bean.weixin.ImageMessage;
+import com.wuhn.weixin.bean.weixin.MusicMessage;
 import com.wuhn.weixin.bean.weixin.News;
 import com.wuhn.weixin.bean.weixin.NewsMessage;
 import com.wuhn.weixin.bean.weixin.TextMessage;
@@ -73,5 +75,30 @@ public class MessageUtil {
 		xstream.alias("xml", newsMessage.getClass());
 		xstream.alias("item", new News().getClass());
 		return xstream.toXML(newsMessage);	
+	}
+	
+	/**
+	 * @功能 将图片消息对象转为xml  java转xml 实用xstream-1.4.7.jar
+	 * @param ImageMessage imageMessage
+	 * @return String
+	 * **/
+	public static String imageMessageToXml(ImageMessage imageMessage){
+		XStream xstream = new XStream();
+		xstream.alias("xml", imageMessage.getClass());
+		return xstream.toXML(imageMessage);
+		
+	}
+	
+	
+	/**
+	 * @功能 将音乐消息对象转为xml  java转xml 实用xstream-1.4.7.jar
+	 * @param MusicMessage musicMessage
+	 * @return String
+	 * **/
+	public static String MusicMessageToXml(MusicMessage musicMessage){
+		XStream xstream = new XStream();
+		xstream.alias("xml", musicMessage.getClass());
+		return xstream.toXML(musicMessage);
+		
 	}
 }

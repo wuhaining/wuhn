@@ -1,6 +1,17 @@
 package com.wuhn.weixin.utils;
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -26,12 +37,18 @@ import net.sf.json.JSONObject;
  * **/
 public class WeixinUtil {
 	//这两个参数可在【开发者中心】中找到
-	private static final String APPID="wxd36bcdcb32caeea5";//appid 第三方用户唯一凭证
-	private static final String APPSECRET="d15d900eccb38cac3db883e9d3f71e2a";//secret 第三方用户唯一凭证密钥，即appsecret
+	//private static final String APPID="wxd36bcdcb32caeea5";//appid 第三方用户唯一凭证
+	//private static final String APPSECRET="d15d900eccb38cac3db883e9d3f71e2a";//secret 第三方用户唯一凭证密钥，即appsecret
+	//测试号
+	private static final String APPID="wx3df1d255a7db4b87";//appid 第三方用户唯一凭证
+	private static final String APPSECRET="c3f43d028074f7655b355605901736f6";//secret 第三方用户唯一凭证密钥，即appsecret
+	
 	//固定
 	private static final String GRANT_TYPE="client_credential";//grant_type 获取access_token填写client_credential
 	
-	private static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";//
+	private static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";//获取access_token
+	
+	private static final String UPLOAD_URL = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE";//上传多媒体文件
 	
 	/**
 	 * @功能 Get方法获取access_token
@@ -91,5 +108,102 @@ public class WeixinUtil {
 			accessToken.setExpires_in(jsonObject.getInt("expires_in"));
 		}
 		return accessToken;
+	}
+	
+	
+	/**
+	 * @throws IOException 
+	 * @功能 新增临时素材 上传
+	 * **/
+	public static String upload(String filePath,String accessToken,String type) throws Throwable{
+		File file = new File(filePath);
+		if(!file.exists()||!file.isFile()){
+			throw new IOException("文件不存在");
+		}
+		String url = UPLOAD_URL.replace("ACCESS_TOKEN", accessToken).replace("TYPE", type);
+		
+		URL urlObj = new URL(url);
+		
+		//连接
+		HttpURLConnection connection = (HttpURLConnection) urlObj.openConnection();
+		connection.setRequestMethod("POST");
+		connection.setDoInput(true);
+		connection.setDoOutput(true);
+		connection.setUseCaches(true);
+		
+		//设置请求头信息
+		connection.setRequestProperty("Connection", "Keep-Alive");
+		connection.setRequestProperty("Charset", "UTF-8");
+		
+		//设置边界
+		String BOUNDARY = "------------" + System.currentTimeMillis();
+		connection.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + BOUNDARY);
+		
+		StringBuilder sbBuilder = new StringBuilder();
+		sbBuilder.append("--");
+		sbBuilder.append(BOUNDARY);
+		sbBuilder.append("\r\n");
+		sbBuilder.append("Content-Disposition:form-data;name=\"file\";filename=\""+file.getName()+"\"\r\n");
+		sbBuilder.append("Content-Type:application/octet-stream\r\n\r\n");
+		
+		byte[] head = sbBuilder.toString().getBytes("utf-8");
+		
+		//获得输出流
+		OutputStream outputStream = new DataOutputStream(connection.getOutputStream());
+		//输出表头
+		outputStream.write(head);
+		
+		//文件正文部分
+		//把文件已流文件的方式，推入到url中
+		DataInputStream dataInputStream = new DataInputStream(new FileInputStream(file));
+		int bytes = 0;
+		byte[] bufferOut = new byte[1024];
+		while ((bytes = dataInputStream.read(bufferOut)) != -1) {
+			outputStream.write(bufferOut, 0, bytes);
+			
+		}
+		
+		dataInputStream.close();
+		
+		//结尾部分
+		byte[] foot = ("\r\n--"+BOUNDARY+"--\r\n").getBytes("utf-8");//定义最后数据分割线
+		
+		outputStream.write(foot);
+		
+		outputStream.flush();
+		outputStream.close();
+		
+		
+		StringBuffer buffer = new StringBuffer();
+		BufferedReader reader = null;
+		String result = null;
+		try {
+			//定义BufferedReader输入流来读取URL的响应
+			reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			String line = null;		
+			while ((line = reader.readLine()) != null) {
+				buffer.append(line);
+			}
+			
+			if(result==null){
+				result = buffer.toString();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}finally{
+			if(reader!=null){
+				reader.close();
+			}
+		}
+		
+		JSONObject jsonObject = JSONObject.fromObject(result);
+		System.out.println(jsonObject);
+		String typeName = "media_id";
+		if(!"image".equals(type)){
+			typeName = type + "_media_id";
+		}
+		String mediaId = jsonObject.getString(typeName);
+		return mediaId;
+		
 	}
 }

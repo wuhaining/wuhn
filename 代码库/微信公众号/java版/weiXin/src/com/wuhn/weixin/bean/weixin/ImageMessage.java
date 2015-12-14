@@ -6,13 +6,13 @@ package com.wuhn.weixin.bean.weixin;
  * @功能 回复图片消息 MsgType=image
  * **/
 public class ImageMessage extends BaseMessage{
-	private String Image;//回复图片消息
+	private Image Image;//回复图片消息
 
-	public String getImage() {
+	public Image getImage() {
 		return Image;
 	}
 
-	public void setImage(String image) {
+	public void setImage(Image image) {
 		Image = image;
 	}
 	

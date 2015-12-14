@@ -6,14 +6,16 @@ package com.wuhn.weixin.bean.weixin;
  * @功能 回复音乐消息 MsgType=music
  * **/
 public class MusicMessage extends BaseMessage{
-	private String Music;//音乐
+	private Music Music;//音乐
 
-	public String getMusic() {
+	public Music getMusic() {
 		return Music;
 	}
 
-	public void setMusic(String music) {
+	public void setMusic(Music music) {
 		Music = music;
 	}
+
+	
 	
 }
