@@ -41,14 +41,14 @@ public class WeixinTest {
 		*/
 		
 		String menu = JSONObject.fromObject(MessageUtil.initMenu()).toString();
-		
+		System.out.println(menu);
 		int result = WeixinUtil.createMenu(token.getAccess_token(), menu);
 		
 		if(result==0){
 			System.out.println("创建菜单成功");
 		}
 		else{
-			System.out.println("创建菜单失败");
+			System.out.println("创建菜单失败"+result);
 		}
 		
 	}

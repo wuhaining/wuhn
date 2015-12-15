@@ -136,7 +136,7 @@ public class MessageUtil {
 		button.setName("菜单");
 		button.setSub_button(new Button[]{clickButton31,clickButton32});
 		
-		menu.setButtons(new Button[]{clickButton11,viewButton21,button});
+		menu.setButton(new Button[]{clickButton11,viewButton21,button});
 		
 		return menu;
 	}
