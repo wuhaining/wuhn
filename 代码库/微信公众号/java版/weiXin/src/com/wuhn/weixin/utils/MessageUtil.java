@@ -6,6 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.wuhn.weixin.bean.menu.Button;
+import com.wuhn.weixin.bean.menu.ClickButton;
+import com.wuhn.weixin.bean.menu.Menu;
+import com.wuhn.weixin.bean.menu.ViewButton;
 import com.wuhn.weixin.bean.weixin.ImageMessage;
 import com.wuhn.weixin.bean.weixin.MusicMessage;
 import com.wuhn.weixin.bean.weixin.News;
@@ -100,5 +104,40 @@ public class MessageUtil {
 		xstream.alias("xml", musicMessage.getClass());
 		return xstream.toXML(musicMessage);
 		
+	}
+	
+	
+	/**
+	 * @功能 组装菜单
+	 * **/
+	public static Menu initMenu(){
+		Menu menu = new Menu();
+		ClickButton clickButton11 = new ClickButton();
+		clickButton11.setName("菜单1号");
+		clickButton11.setType("click");
+		clickButton11.setKey("cd_11");
+		
+		ViewButton viewButton21 = new ViewButton();
+		viewButton21.setName("view菜单");
+		viewButton21.setType("view");
+		viewButton21.setUrl("https://www.baidu.com/");
+		
+		ClickButton clickButton31 = new ClickButton();
+		clickButton31.setName("扫码推事件");
+		clickButton31.setType("scancode_push");
+		clickButton31.setKey("cd_31");
+		
+		ClickButton clickButton32 = new ClickButton();
+		clickButton32.setName("地理位置选择器");
+		clickButton32.setType("location_select");
+		clickButton32.setKey("cd_32");
+		
+		Button button = new Button();
+		button.setName("菜单");
+		button.setSub_button(new Button[]{clickButton31,clickButton32});
+		
+		menu.setButtons(new Button[]{clickButton11,viewButton21,button});
+		
+		return menu;
 	}
 }

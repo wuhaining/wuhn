@@ -83,6 +83,7 @@ public class WeixinServlet extends HttpServlet{
 				else{
 					message = SendMessageUtil.initTextMessage(toUserName, fromUserName, content);
 				}				
+				
 			}
 			else if(ReceiveMessageConstant.MESSAGE_EVENT.equals(msgType)){
 				String eventType = map.get("Event");

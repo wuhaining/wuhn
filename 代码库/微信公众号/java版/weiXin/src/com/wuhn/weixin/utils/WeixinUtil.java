@@ -26,6 +26,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
+import com.wuhn.weixin.bean.menu.ClickButton;
+import com.wuhn.weixin.bean.menu.Menu;
 import com.wuhn.weixin.bean.weixin.AccessToken;
 
 import net.sf.json.JSONObject;
@@ -49,6 +51,8 @@ public class WeixinUtil {
 	private static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";//获取access_token
 	
 	private static final String UPLOAD_URL = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE";//上传多媒体文件
+	
+	private static final String CREATE_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";//创建菜单
 	
 	/**
 	 * @功能 Get方法获取access_token
@@ -205,5 +209,21 @@ public class WeixinUtil {
 		String mediaId = jsonObject.getString(typeName);
 		return mediaId;
 		
+	}
+	
+	
+	/**
+	 * @功能 菜单
+	 * **/
+	public static int createMenu(String accessToken,String menu){
+		int result = 0;
+		String url = CREATE_MENU_URL.replace("ACCESS_TOKEN", accessToken);
+		
+		JSONObject jsonObject = doPostStr(url, menu);
+		if(jsonObject != null){
+			result = jsonObject.getInt("errcode");
+		}
+		
+		return result;		
 	}
 }
