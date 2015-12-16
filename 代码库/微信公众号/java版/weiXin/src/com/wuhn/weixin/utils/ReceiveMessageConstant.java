@@ -19,7 +19,8 @@ public class ReceiveMessageConstant {
 	public static final String MESSAGE_EVENT = "event";//事件推送
 	public static final String MESSAGE_EVENT_SUBSCRIBE = "subscribe";//事件推送关注
 	public static final String MESSAGE_EVENT_UNSUBSCRIBE = "unsubscribe";//取消关注事件
-	public static final String MESSAGE_EVENT_SUBSCRIBE_QRSCENE = "qrscene_";//扫描带参数二维码事件subscribe
+	//public static final String MESSAGE_EVENT_SUBSCRIBE_QRSCENE = "qrscene_";//扫描带参数二维码事件subscribe
+	public static final String MESSAGE_EVENT_SCAN = "SCAN";//用户已关注时的事件推送
 	public static final String MESSAGE_EVENT_LOCATION = "LOCATION";//上报地理位置事件
 	public static final String MESSAGE_EVENT_CLICK = "CLICK";//自定义菜单事件
 	public static final String MESSAGE_EVENT_VIEW = "VIEW";//点击菜单跳转链接时的事件推送

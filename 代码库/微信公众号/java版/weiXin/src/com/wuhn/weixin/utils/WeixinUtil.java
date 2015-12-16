@@ -39,6 +39,7 @@ import net.sf.json.JSONObject;
  * **/
 public class WeixinUtil {
 	//这两个参数可在【开发者中心】中找到
+	//正式环境
 	//private static final String APPID="wxd36bcdcb32caeea5";//appid 第三方用户唯一凭证
 	//private static final String APPSECRET="d15d900eccb38cac3db883e9d3f71e2a";//secret 第三方用户唯一凭证密钥，即appsecret
 	//测试号
@@ -48,11 +49,6 @@ public class WeixinUtil {
 	//固定
 	private static final String GRANT_TYPE="client_credential";//grant_type 获取access_token填写client_credential
 	
-	private static final String ACCESS_TOKEN_URL = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";//获取access_token
-	
-	private static final String UPLOAD_URL = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=ACCESS_TOKEN&type=TYPE";//上传多媒体文件
-	
-	private static final String CREATE_MENU_URL = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN";//创建菜单
 	
 	/**
 	 * @功能 Get方法获取access_token
@@ -105,7 +101,7 @@ public class WeixinUtil {
 	 * **/
 	public static AccessToken getAccessToken(){
 		AccessToken accessToken = new AccessToken();
-		String url = ACCESS_TOKEN_URL.replace("APPID", APPID).replace("APPSECRET", APPSECRET);
+		String url = WeixinUrl.ACCESS_TOKEN_URL.replace("APPID", APPID).replace("APPSECRET", APPSECRET);
 		JSONObject jsonObject = doGetStr(url);
 		if(jsonObject != null){
 			accessToken.setAccess_token(jsonObject.getString("access_token"));
@@ -124,7 +120,7 @@ public class WeixinUtil {
 		if(!file.exists()||!file.isFile()){
 			throw new IOException("文件不存在");
 		}
-		String url = UPLOAD_URL.replace("ACCESS_TOKEN", accessToken).replace("TYPE", type);
+		String url = WeixinUrl.UPLOAD_URL.replace("ACCESS_TOKEN", accessToken).replace("TYPE", type);
 		
 		URL urlObj = new URL(url);
 		
@@ -213,11 +209,11 @@ public class WeixinUtil {
 	
 	
 	/**
-	 * @功能 菜单
+	 * @功能 创建菜单
 	 * **/
 	public static int createMenu(String accessToken,String menu){
 		int result = 0;
-		String url = CREATE_MENU_URL.replace("ACCESS_TOKEN", accessToken);
+		String url = WeixinUrl.CREATE_MENU_URL.replace("ACCESS_TOKEN", accessToken);
 		
 		JSONObject jsonObject = doPostStr(url, menu);
 		if(jsonObject != null){
@@ -226,4 +222,35 @@ public class WeixinUtil {
 		
 		return result;		
 	}
+	
+	/**
+	 * @功能 创建菜单
+	 * **/
+	public static JSONObject getMenu(String accessToken){
+		JSONObject jsonObject = new JSONObject();
+		String url = WeixinUrl.GET_MENU_URL.replace("ACCESS_TOKEN", accessToken);
+		
+		jsonObject = doGetStr(url);
+		
+		return jsonObject;
+	}
+	
+	
+	/**
+	 * @功能 菜单
+	 * **/
+	public static int deleteMenu(String accessToken){
+		int result = 0;
+		String url = WeixinUrl.DELETE_MENU_URL.replace("ACCESS_TOKEN", accessToken);
+		
+		JSONObject jsonObject = doGetStr(url);
+		if(jsonObject != null){
+			result = jsonObject.getInt("errcode");
+		}
+		
+		return result;			
+	}
+	
+	
+	
 }

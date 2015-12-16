@@ -19,7 +19,7 @@ public class WeixinTest {
 		System.out.println("票据："+token.getAccess_token());
 		System.out.println("有效时间："+token.getExpires_in());
 		System.out.println("*********测试结束***********");
-		/*
+		/*上传
 		String path = "E:/images/01.jpg";
 		try {
 			String mediaId = WeixinUtil.upload(path, token.getAccess_token(), "thumb");
@@ -40,6 +40,7 @@ public class WeixinTest {
 		}
 		*/
 		
+		/*创建菜单
 		String menu = JSONObject.fromObject(MessageUtil.initMenu()).toString();
 		System.out.println(menu);
 		int result = WeixinUtil.createMenu(token.getAccess_token(), menu);
@@ -50,6 +51,19 @@ public class WeixinTest {
 		else{
 			System.out.println("创建菜单失败"+result);
 		}
+		*/
 		
+		
+		//System.out.println(WeixinUtil.getMenu(token.getAccess_token()));
+		
+		/*
+		int result = WeixinUtil.deleteMenu(token.getAccess_token());
+		if(result==0){
+			System.out.println("删除菜单成功！");
+		}
+		else{
+			System.out.println("删除菜单失败！");
+		}
+		*/
 	}
 }
