@@ -93,7 +93,11 @@ public class SendMailTest {
 		         prop.setProperty("mail.host", "smtp.qq.com");
 		         prop.setProperty("mail.transport.protocol", "smtp");
 		         prop.setProperty("mail.smtp.auth", "true");
+		         //prop.setProperty("mail.smtp.port", "465");
+		         prop.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 		         prop.setProperty("mail.smtp.port", "465");
+		         prop.setProperty("mail.smtp.socketFactory.port", "465");
+
 		         //使用JavaMail发送邮件的5个步骤
 		         //1、创建session
 		         Session session = Session.getInstance(prop);
