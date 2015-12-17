@@ -36,7 +36,7 @@ public class SendMailTest {
 	      //发送人邮箱
 	      String from = "765811529@qq.com";
 	      final String username = "765811529@qq.com";//发送人账号
-	      final String password = "qw82232160";//发送人密码
+	      final String password = "opzirbzloqhwbgah";//发送人密码 qq授权码
 
 	      //smtp服务器（邮件发送服务器）这里使用的是qq服务器
 	      String host = "smtp.qq.com";
@@ -45,7 +45,10 @@ public class SendMailTest {
 	      props.put("mail.smtp.auth", "true");
 	      props.put("mail.smtp.starttls.enable", "true");
 	      props.put("mail.smtp.host", host);
+	      //需要加上
 	      props.put("mail.smtp.port", "465");
+	      props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+	      props.put("mail.smtp.socketFactory.port", "465");
 	      
 	      System.out.println("获取session...");
 	      //获取session
@@ -55,6 +58,7 @@ public class SendMailTest {
 	               return new PasswordAuthentication(username, password);
 		   }
 	         });
+	      session.setDebug(true);
 	      System.out.println("创建一个MimeMessage对象...");
 	      try {
 			   //创建一个MimeMessage对象（Message类是创建和解析邮件内容的API，它的实例对象代表一封电子邮件。） 
@@ -106,7 +110,7 @@ public class SendMailTest {
 		         //2、通过session得到transport对象
 		         Transport ts = session.getTransport();
 		         //3、使用邮箱的用户名和密码连上邮件服务器，发送邮件时，发件人需要提交邮箱的用户名和密码给smtp服务器，用户名和密码都通过验证之后才能够正常发送邮件给收件人。
-		         ts.connect("smtp.qq.com", "765811529@qq.com", "qw82232160");
+		         ts.connect("smtp.qq.com", "765811529@qq.com", "opzirbzloqhwbgah");//密码为授权码
 		         //4、创建邮件
 		         Message message = createSimpleMail(session);
 		         //5、发送邮件
