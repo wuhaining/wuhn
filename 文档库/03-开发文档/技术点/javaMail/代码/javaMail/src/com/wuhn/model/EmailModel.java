@@ -5,7 +5,7 @@ package com.wuhn.model;
  * @创建时间 2015-12-18
  * @功能 javamail 设置发送的内容
  * **/
-public class MailModel {
+public class EmailModel {
 	private String subject;//邮件的标题
 	private String Text;//邮件的文本内容
 	private String file;//附件地址

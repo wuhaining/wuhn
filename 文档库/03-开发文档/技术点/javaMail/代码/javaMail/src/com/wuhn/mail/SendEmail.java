@@ -6,9 +6,9 @@ import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
 
-import com.wuhn.model.MailModel;
-import com.wuhn.model.SendMailModel;
-import com.wuhn.utils.SendMailUtil;
+import com.wuhn.model.EmailModel;
+import com.wuhn.model.SendEmailModel;
+import com.wuhn.utils.SendEmailUtil;
 
 /**
  * @author wuhn
@@ -19,20 +19,20 @@ public class SendEmail {
 	
 	/**
 	 * @功能 发送简单的电子邮件
-	 * @param SendMailModel sendMailModel
+	 * @param SendEmailModel sendMailModel
 	 * 		  MailModel mailModel
 	 * @return void
 	 * **/
-	public static void sendEmail(SendMailModel sendMailModel,MailModel mailModel) {
+	public static void sendEmail(SendEmailModel sendMailModel,EmailModel mailModel) {
 		//设置Properties
-		Properties props = SendMailUtil.setSmtpProperties(sendMailModel);
+		Properties props = SendEmailUtil.setSmtpProperties(sendMailModel);
 		
 		//获取一个session
-		Session session = SendMailUtil.getSession(sendMailModel, props);
+		Session session = SendEmailUtil.getSession(sendMailModel, props);
 				
 		try {
 			//创建一个默认MimeMessage对象，并设置发件人、收件人、主题（From、To、Subject）在消息中。
-			Message message = SendMailUtil.setMimeMessage(sendMailModel, mailModel, session);
+			Message message = SendEmailUtil.setMimeMessage(sendMailModel, mailModel, session);
 			
 			//发送邮件
 			Transport.send(message);
@@ -46,21 +46,49 @@ public class SendEmail {
 	
 	
 	/**
-	 * @功能 发送电子邮件带有附件
-	 * @param SendMailModel sendMailModel
+	 * @功能 发送带有附件的电子邮件
+	 * @param SendEmailModel sendMailModel
 	 * 		  MailModel mailModel
 	 * @return void
 	 * **/	
-	public static void SendAttachmentInEmail(SendMailModel sendMailModel,MailModel mailModel) {
+	public static void sendAttachmentInEmail(SendEmailModel sendMailModel,EmailModel mailModel) {
 		//设置Properties
-		Properties props = SendMailUtil.setSmtpProperties(sendMailModel);
+		Properties props = SendEmailUtil.setSmtpProperties(sendMailModel);
 		
 		//获取一个session
-		Session session = SendMailUtil.getSession(sendMailModel, props);
+		Session session = SendEmailUtil.getSession(sendMailModel, props);
 				
 		try {
 			//创建一个默认MimeMessage对象，并设置发件人、收件人、主题（From、To、Subject）在消息中。
-			Message message = SendMailUtil.setMessageBodyPart(sendMailModel, mailModel, session);
+			Message message = SendEmailUtil.setMessageBodyPart(sendMailModel, mailModel, session);
+			
+			//发送邮件
+			Transport.send(message);
+			System.out.println("发送邮件...成功！");
+		} catch (Exception e) {
+			System.out.println("发送邮件...失败！");
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	/**
+	 * @功能 发送带有图片的电子邮件
+	 * @param SendEmailModel sendMailModel
+	 * 		  MailModel mailModel
+	 * @return void
+	 * **/	
+	public static void sendInlineImagesInEmail(SendEmailModel sendMailModel,EmailModel mailModel) {
+		//设置Properties
+		Properties props = SendEmailUtil.setSmtpProperties(sendMailModel);
+		
+		//获取一个session
+		Session session = SendEmailUtil.getSession(sendMailModel, props);
+				
+		try {
+			//创建一个默认MimeMessage对象，并设置发件人、收件人、主题（From、To、Subject）在消息中。
+			Message message = SendEmailUtil.setInlineImages(sendMailModel, mailModel, session);
 			
 			//发送邮件
 			Transport.send(message);

@@ -5,7 +5,7 @@ package com.wuhn.model;
  * @创建时间 2015-12-18
  * @功能 javamail 发送简单的电子邮件
  * **/
-public class SendMailModel {
+public class SendEmailModel {
 	private String to;//收件人邮箱
 	private String from;//发送人邮箱
 	private String username;//发送人账号

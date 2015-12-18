@@ -14,8 +14,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.wuhn.model.MailModel;
-import com.wuhn.model.SendMailModel;
+import com.wuhn.model.EmailModel;
+import com.wuhn.model.SendEmailModel;
 
 /**
  * @author wuhn

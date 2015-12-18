@@ -4,8 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.wuhn.model.MailModel;
-import com.wuhn.model.SendMailModel;
+import com.wuhn.model.EmailModel;
+import com.wuhn.model.SendEmailModel;
 
 /**
  * @author wuhn
@@ -28,7 +28,7 @@ public class FormalTest {
 	public void testSendMail(){
 		System.out.println("*******简单邮件发送*******");
 		//设置初始化属性
-		SendMailModel sendMailModel = new SendMailModel();
+		SendEmailModel sendMailModel = new SendEmailModel();
 		sendMailModel.setTo("2501935978@qq.com");
 		sendMailModel.setFrom("765811529@qq.com");
 		sendMailModel.setUsername("765811529@qq.com");
@@ -36,7 +36,7 @@ public class FormalTest {
 		sendMailModel.setPort("465");
 		sendMailModel.setHost("smtp.qq.com");
 		
-		MailModel mailModel = new MailModel();
+		EmailModel mailModel = new EmailModel();
 		mailModel.setSubject("测试发送邮件");
 		mailModel.setText("这是一个测试内容！");
 		
@@ -48,7 +48,7 @@ public class FormalTest {
 	public void testSendAttachmentInEmail(){
 		System.out.println("*******带附件邮件发送*******");
 		//设置初始化属性
-		SendMailModel sendMailModel = new SendMailModel();
+		SendEmailModel sendMailModel = new SendEmailModel();
 		sendMailModel.setTo("2501935978@qq.com");
 		sendMailModel.setFrom("765811529@qq.com");
 		sendMailModel.setUsername("765811529@qq.com");
@@ -56,12 +56,12 @@ public class FormalTest {
 		sendMailModel.setPort("465");
 		sendMailModel.setHost("smtp.qq.com");
 		
-		MailModel mailModel = new MailModel();
+		EmailModel mailModel = new EmailModel();
 		mailModel.setSubject("测试发送邮件");
 		mailModel.setText("这是一个测试内容！");
 		mailModel.setFile("src\\111111.txt");
 		
-		SendEmail.SendAttachmentInEmail(sendMailModel, mailModel);
+		SendEmail.sendAttachmentInEmail(sendMailModel, mailModel);
 		
 	}
 	
@@ -69,7 +69,7 @@ public class FormalTest {
 	public void testSendHTMLEmail(){
 		System.out.println("*******带html邮件发送*******");
 		//设置初始化属性
-		SendMailModel sendMailModel = new SendMailModel();
+		SendEmailModel sendMailModel = new SendEmailModel();
 		sendMailModel.setTo("2501935978@qq.com");
 		sendMailModel.setFrom("765811529@qq.com");
 		sendMailModel.setUsername("765811529@qq.com");
@@ -77,7 +77,7 @@ public class FormalTest {
 		sendMailModel.setPort("465");
 		sendMailModel.setHost("smtp.qq.com");
 		
-		MailModel mailModel = new MailModel();
+		EmailModel mailModel = new EmailModel();
 		mailModel.setSubject("测试发送邮件");
 		mailModel.setText("这是一个测试内容！");
 		mailModel.setHtml("<h1>This is actual message embedded in HTML tags</h1>");
@@ -85,4 +85,26 @@ public class FormalTest {
 		SendEmail.sendEmail(sendMailModel, mailModel);
 		
 	}
+	
+	@Test
+	public void testSendInlineImagesInEmail(){
+		System.out.println("*******带图片邮件发送*******");
+		//设置初始化属性
+		SendEmailModel sendMailModel = new SendEmailModel();
+		sendMailModel.setTo("2501935978@qq.com");
+		sendMailModel.setFrom("765811529@qq.com");
+		sendMailModel.setUsername("765811529@qq.com");
+		sendMailModel.setPassword("opzirbzloqhwbgah");
+		sendMailModel.setPort("465");
+		sendMailModel.setHost("smtp.qq.com");
+		
+		EmailModel mailModel = new EmailModel();
+		mailModel.setSubject("测试发送邮件");
+		mailModel.setFile("src\\01.jpg");
+		mailModel.setHtml("<H1>Hello</H1><img src='cid:image'>");
+		
+		SendEmail.sendInlineImagesInEmail(sendMailModel, mailModel);
+		
+	}
+	
 }

@@ -17,22 +17,22 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-import com.wuhn.model.MailModel;
-import com.wuhn.model.SendMailModel;
+import com.wuhn.model.EmailModel;
+import com.wuhn.model.SendEmailModel;
 
 /**
  * @author wuhn
  * @创建时间 2015-12-17
  * @功能 javamail 公用方法
  * **/
-public class SendMailUtil {
+public class SendEmailUtil {
 	
 	/**
 	 * @功能 设置连接smtp邮件的属性
-	 * @param SendMailModel sendMailModel
+	 * @param SendEmailModel sendMailModel
 	 * @return Properties props
 	 * **/
-	public static Properties setSmtpProperties(SendMailModel sendMailModel){
+	public static Properties setSmtpProperties(SendEmailModel sendMailModel){
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
@@ -47,11 +47,11 @@ public class SendMailUtil {
 	
 	/**
 	 * @功能 获取session
-	 * @param SendMailModel sendMailModel
+	 * @param SendEmailModel sendMailModel
 	 * 		  Properties props	
 	 * @return Session session
 	 * **/
-	public static Session getSession(final SendMailModel sendMailModel,Properties props){
+	public static Session getSession(final SendEmailModel sendMailModel,Properties props){
 		Session session = Session.getInstance(props,
 		         new javax.mail.Authenticator() {
 		            protected PasswordAuthentication getPasswordAuthentication() {
@@ -66,14 +66,14 @@ public class SendMailUtil {
 	
 	/**
 	 * @功能 创建一个MimeMessage对象（Message类是创建和解析邮件内容的API，它的实例对象代表一封电子邮件。） 
-	 * @param SendMailModel sendMailModel
+	 * @param SendEmailModel sendMailModel
 	 * 		  MailModel mailModel
 	 * 		  Session session
 	 * @return Message message
 	 * @throws MessagingException 
 	 * @throws AddressException 
 	 * **/
-	public static Message setMimeMessage(SendMailModel sendMailModel,MailModel mailModel,Session session) throws AddressException, MessagingException{
+	public static Message setMimeMessage(SendEmailModel sendMailModel,EmailModel mailModel,Session session) throws AddressException, MessagingException{
 		//创建一个MimeMessage对象（Message类是创建和解析邮件内容的API，它的实例对象代表一封电子邮件。） 
 		Message message = new MimeMessage(session);
 	
@@ -90,7 +90,7 @@ public class SendMailUtil {
 		//邮件的文本内容
 		message.setText(mailModel.getText());
 		
-		//邮件的html内容
+		//邮件的html内容 优先显示
 		if(!mailModel.getHtml().isEmpty()){
 			message.setContent(mailModel.getHtml(), "text/html");
 		}
@@ -100,15 +100,15 @@ public class SendMailUtil {
 	
 	
 	/**
-	 * @功能 创建message对象
-	 * @param SendMailModel sendMailModel
+	 * @功能 创建message对象 带附件的邮件
+	 * @param SendEmailModel sendMailModel
 	 * 		  MailModel mailModel
 	 * 		  Session session
 	 * @return Message message
 	 * @throws MessagingException 
 	 * @throws AddressException 
 	 * **/
-	public static Message setMessageBodyPart(SendMailModel sendMailModel,MailModel mailModel,Session session) throws AddressException, MessagingException{
+	public static Message setMessageBodyPart(SendEmailModel sendMailModel,EmailModel mailModel,Session session) throws AddressException, MessagingException{
 		//创建一个MimeMessage对象（Message类是创建和解析邮件内容的API，它的实例对象代表一封电子邮件。） 
 		Message message = new MimeMessage(session);
 	
@@ -140,6 +140,57 @@ public class SendMailUtil {
         DataSource source = new FileDataSource(filename);
         messageBodyPart.setDataHandler(new DataHandler(source));
         messageBodyPart.setFileName(filename);
+        multipart.addBodyPart(messageBodyPart);
+        
+        //完成message的组装
+        message.setContent(multipart);
+        
+		return message;
+	}
+	
+	
+	
+	/**
+	 * @功能 创建message对象 带图片的邮件
+	 * @param SendEmailModel sendMailModel
+	 * 		  MailModel mailModel
+	 * 		  Session session
+	 * @return Message message
+	 * @throws MessagingException 
+	 * @throws AddressException 
+	 * **/
+	public static Message setInlineImages(SendEmailModel sendMailModel,EmailModel mailModel,Session session) throws AddressException, MessagingException{
+		//创建一个MimeMessage对象（Message类是创建和解析邮件内容的API，它的实例对象代表一封电子邮件。） 
+		Message message = new MimeMessage(session);
+	
+		//指明邮件的发件人
+		message.setFrom(new InternetAddress(sendMailModel.getFrom()));
+	
+		//指明邮件的收件人
+		message.setRecipients(Message.RecipientType.TO,
+				InternetAddress.parse(sendMailModel.getTo()));
+	
+		//邮件的标题
+		message.setSubject(mailModel.getSubject());
+	
+		
+		//message.setText(mailModel.getText());
+		
+		//创建一个Multipart message【可以包含多个MimeBodyPart】
+		Multipart multipart = new MimeMultipart("related");
+		
+		//创建第一个MimeBodyPart，设置邮件内容【MimeBodyPart也可以再包含一个Multipart】
+		BodyPart messageBodyPart = new MimeBodyPart();
+		//邮件的文本内容
+		messageBodyPart.setContent(mailModel.getHtml(), "text/html");
+		multipart.addBodyPart(messageBodyPart);
+		
+		//创建第二个MimeBodyPart，设置邮件附件
+		messageBodyPart = new MimeBodyPart();
+        String filename = mailModel.getFile();
+        DataSource source = new FileDataSource(filename);
+        messageBodyPart.setDataHandler(new DataHandler(source));
+        messageBodyPart.setHeader("Content-ID", "<image>");
         multipart.addBodyPart(messageBodyPart);
         
         //完成message的组装
