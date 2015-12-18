@@ -1,0 +1,15 @@
+31号机
+数据库名：ycyk
+用户：root
+密码：123456
+
+
+
+//使用$.get()
+$.get('http://192.168.0.29:8091/NanHaiJianKong/API/AlarmManageServices/alarmQuery/{"rows":"10","page":"1"}', function(data){
+	console.log(data);	 
+		
+}); 	
+
+
+<iframe scrolling="yes" frameborder="0" height="95%" width="100%" src="../../csba/info.do?id=17A79009-8CAA-4B39-B83E-251877C9E3E9&amp;type=edit"></iframe>
