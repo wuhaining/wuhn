@@ -1,5 +1,9 @@
 package com.wuhn.mail;
 
+import java.io.IOException;
+
+import javax.mail.MessagingException;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -104,6 +108,29 @@ public class FormalTest {
 		mailModel.setHtml("<H1>Hello</H1><img src='cid:image'>");
 		
 		SendEmail.sendInlineImagesInEmail(sendMailModel, mailModel);
+		
+	}
+	
+	@Test
+	public void testReceiveEmail(){
+		System.out.println("*******带图片邮件发送*******");
+		//设置初始化属性
+		SendEmailModel sendMailModel = new SendEmailModel();
+		sendMailModel.setTo("2501935978@qq.com");
+		sendMailModel.setFrom("765811529@qq.com");
+		sendMailModel.setUsername("765811529@qq.com");
+		sendMailModel.setPassword("opzirbzloqhwbgah");
+		sendMailModel.setPort("995");
+		sendMailModel.setHost("pop.qq.com");
+	
+		
+		try {
+			ReceiveEmail.receiveEmail(sendMailModel);
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
