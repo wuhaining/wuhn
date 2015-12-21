@@ -91,7 +91,7 @@ public class SendEmailUtil {
 		message.setText(mailModel.getText());
 		
 		//邮件的html内容 优先显示
-		if(!mailModel.getHtml().isEmpty()){
+		if(mailModel.getHtml()!=null){
 			message.setContent(mailModel.getHtml(), "text/html");
 		}
 	    

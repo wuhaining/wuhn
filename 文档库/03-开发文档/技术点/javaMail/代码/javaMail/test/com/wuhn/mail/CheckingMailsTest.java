@@ -46,7 +46,7 @@ public class CheckingMailsTest {
 		      //create the POP3 store object and connect with the pop server
 		      Store store = emailSession.getStore("pop3s");
 
-		      store.connect("pop.qq.com", "765811529@qq.com", "opzirbzloqhwbgah");
+		      store.connect("pop.qq.com", "765811529@qq.com", "");
 
 		      //create the folder object and open it
 		      Folder emailFolder = store.getFolder("INBOX");

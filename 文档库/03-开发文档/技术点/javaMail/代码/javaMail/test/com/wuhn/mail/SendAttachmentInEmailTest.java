@@ -47,7 +47,7 @@ public class SendAttachmentInEmailTest {
       //发送人邮箱
       String from = "765811529@qq.com";
       final String username = "765811529@qq.com";//发送人账号
-      final String password = "opzirbzloqhwbgah";//发送人密码 qq授权码
+      final String password = "";//发送人密码 qq授权码
 
       //smtp服务器（邮件发送服务器）这里使用的是qq服务器
       String host = "smtp.qq.com";

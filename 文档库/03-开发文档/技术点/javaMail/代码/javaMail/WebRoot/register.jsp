@@ -4,12 +4,13 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE>
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>javamail</title>
+    <title>注册页面</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -17,13 +18,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
-	--> 
-	
+	-->
+
   </head>
   
   <body>
-    <h2>javamail电子邮件发送</h2>
-    <a href="<%=path%>/register.jsp">模拟用户注册</a>
-    
+    <form action="<%=path%>/RegisterServlet" method="post">
+    	用户名：<input type="text" name="username"/><br>
+    	密码：<input type="text" name="password"/><br>
+    	邮箱：<input type="text" name="email"/><br>
+    	<input type="submit" value="注册"/>
+    </form>
   </body>
 </html>

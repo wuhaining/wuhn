@@ -44,7 +44,7 @@ public class SendMailTest {
 	      //发送人邮箱
 	      String from = "765811529@qq.com";
 	      final String username = "765811529@qq.com";//发送人账号
-	      final String password = "opzirbzloqhwbgah";//发送人密码 qq授权码
+	      final String password = "";//发送人密码 qq授权码
 
 	      //smtp服务器（邮件发送服务器）这里使用的是qq服务器
 	      String host = "smtp.qq.com";
@@ -118,7 +118,7 @@ public class SendMailTest {
 	         //2、通过session得到transport对象
 	         Transport ts = session.getTransport();
 	         //3、使用邮箱的用户名和密码连上邮件服务器，发送邮件时，发件人需要提交邮箱的用户名和密码给smtp服务器，用户名和密码都通过验证之后才能够正常发送邮件给收件人。
-	         ts.connect("smtp.qq.com", "765811529@qq.com", "opzirbzloqhwbgah");//密码为授权码
+	         ts.connect("smtp.qq.com", "765811529@qq.com", "");//密码为授权码
 	         //4、创建邮件
 	         Message message = createSimpleMail(session);
 	         //5、发送邮件

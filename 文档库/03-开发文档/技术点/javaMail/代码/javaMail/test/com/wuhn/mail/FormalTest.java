@@ -36,7 +36,7 @@ public class FormalTest {
 		sendMailModel.setTo("2501935978@qq.com");
 		sendMailModel.setFrom("765811529@qq.com");
 		sendMailModel.setUsername("765811529@qq.com");
-		sendMailModel.setPassword("opzirbzloqhwbgah");
+		sendMailModel.setPassword("");
 		sendMailModel.setPort("465");
 		sendMailModel.setHost("smtp.qq.com");
 		
@@ -56,7 +56,7 @@ public class FormalTest {
 		sendMailModel.setTo("2501935978@qq.com");
 		sendMailModel.setFrom("765811529@qq.com");
 		sendMailModel.setUsername("765811529@qq.com");
-		sendMailModel.setPassword("opzirbzloqhwbgah");
+		sendMailModel.setPassword("");
 		sendMailModel.setPort("465");
 		sendMailModel.setHost("smtp.qq.com");
 		
@@ -77,7 +77,7 @@ public class FormalTest {
 		sendMailModel.setTo("2501935978@qq.com");
 		sendMailModel.setFrom("765811529@qq.com");
 		sendMailModel.setUsername("765811529@qq.com");
-		sendMailModel.setPassword("opzirbzloqhwbgah");
+		sendMailModel.setPassword("");
 		sendMailModel.setPort("465");
 		sendMailModel.setHost("smtp.qq.com");
 		
@@ -98,7 +98,7 @@ public class FormalTest {
 		sendMailModel.setTo("2501935978@qq.com");
 		sendMailModel.setFrom("765811529@qq.com");
 		sendMailModel.setUsername("765811529@qq.com");
-		sendMailModel.setPassword("opzirbzloqhwbgah");
+		sendMailModel.setPassword("");
 		sendMailModel.setPort("465");
 		sendMailModel.setHost("smtp.qq.com");
 		
@@ -119,7 +119,7 @@ public class FormalTest {
 		sendMailModel.setTo("2501935978@qq.com");
 		sendMailModel.setFrom("765811529@qq.com");
 		sendMailModel.setUsername("765811529@qq.com");
-		sendMailModel.setPassword("opzirbzloqhwbgah");
+		sendMailModel.setPassword("");
 		sendMailModel.setPort("995");
 		sendMailModel.setHost("pop.qq.com");
 	

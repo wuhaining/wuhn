@@ -9,7 +9,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>javamail</title>
+    <title>消息提示页面</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -17,13 +18,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="description" content="This is my page">
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
-	--> 
-	
+	-->
+
   </head>
   
   <body>
-    <h2>javamail电子邮件发送</h2>
-    <a href="<%=path%>/register.jsp">模拟用户注册</a>
-    
+    ${message}
   </body>
 </html>
