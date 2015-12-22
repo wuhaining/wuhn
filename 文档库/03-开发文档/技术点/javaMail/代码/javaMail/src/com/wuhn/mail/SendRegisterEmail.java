@@ -24,7 +24,7 @@ public class SendRegisterEmail extends Thread{
 		sendMailModel.setTo(user.getEmail());
 		sendMailModel.setFrom("765811529@qq.com");
 		sendMailModel.setUsername("765811529@qq.com");
-		sendMailModel.setPassword("");
+		sendMailModel.setPassword("opzirbzloqhwbgah");
 		sendMailModel.setPort("465");
 		sendMailModel.setHost("smtp.qq.com");
 		
