@@ -14,11 +14,15 @@
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<!-- 公共样式 -->
+	<link rel="stylesheet" href="<%=basePath%>resources/css/common/common.css">
   </head>
   
   <body>
-  	<!-- 导航栏 -->
+  	<!-- 导航栏
     <iframe frameborder="0" scrolling="no" width="100%" src="<%=basePath%>externalPages/common/navigation.jsp"></iframe>
+     -->
+    <jsp:include page="/externalPages/common/navigation.jsp"></jsp:include>
 	<!-- 底部footer -->
 	<iframe frameborder="0" scrolling="no" width="100%" src="<%=basePath%>externalPages/common/footer.jsp"></iframe>
   </body>

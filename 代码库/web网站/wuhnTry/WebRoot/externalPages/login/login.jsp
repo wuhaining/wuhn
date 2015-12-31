@@ -8,13 +8,15 @@
     
     <title>登陆页面</title>
     <link href="<%=basePath%>resources/css/externalPages/login/login.css" rel="stylesheet">
-
+	<!-- 公共样式 -->
+	<link rel="stylesheet" href="<%=basePath%>resources/css/common/common.css">
   </head>
   
   <body>
-  	<!-- 导航栏 -->
+  	<!-- 导航栏 
     <iframe frameborder="0" scrolling="no" width="100%" src="<%=basePath%>externalPages/common/navigation.jsp"></iframe>
-    
+    -->
+    <jsp:include page="/externalPages/common/navigation.jsp"></jsp:include>
     
     <div class="container text-center">
   		<form class="form-horizontal loginForm" action="<%=path%>/login" method="post">
