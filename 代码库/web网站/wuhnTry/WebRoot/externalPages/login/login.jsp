@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ include file="/externalPages/common/bootstrap.jsp" %>
 
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
   <head>
     <base href="<%=basePath%>">
@@ -18,7 +18,7 @@
     -->
     <jsp:include page="/externalPages/common/navigation.jsp"></jsp:include>
     
-    <div class="container text-center">
+    <div class="container text-center loginContainer">
   		<form class="form-horizontal loginForm" action="<%=path%>/login" method="post">
   			<div class="form-group">
 			    	<div class="input-group">
@@ -34,6 +34,9 @@
 		  </div>
 		  <div class="form-group">
 		      <button type="button" class="btn btn-primary btnSubmit">登陆</button>
+		  </div>
+		  <div class="form-group">
+		  	<a target="_blank" href="<%=basePath%>externalPages/register/register.jsp">没有账号？立刻注册</a>
 		  </div>
   		</form> 	
   	</div>

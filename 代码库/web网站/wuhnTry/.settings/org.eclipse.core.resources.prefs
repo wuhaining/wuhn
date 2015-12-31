@@ -1,6 +1,7 @@
-#Wed Dec 30 16:13:53 CST 2015
+#Thu Dec 31 15:41:16 CST 2015
 eclipse.preferences.version=1
 encoding//WebRoot/WEB-INF/internalPages/helloWorld.jsp=UTF-8
 encoding//WebRoot/externalPages/common/bootstrap.jsp=UTF-8
 encoding//WebRoot/externalPages/login/login.jsp=UTF-8
+encoding//WebRoot/externalPages/register/register.jsp=UTF-8
 encoding/<project>=UTF-8

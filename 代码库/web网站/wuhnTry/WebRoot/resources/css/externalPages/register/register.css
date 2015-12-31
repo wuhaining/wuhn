@@ -1,18 +1,17 @@
 @CHARSET "UTF-8";
 /**
 *@author wuhn
-*@创建时间 2015-12-30
+*@创建时间 2015-12-31
 *@功能 登陆样式
 **/
 
 /********排版*********/
-.loginContainer{
-	margin-top:10%;
+.regitsterContainer{
+	margin-top:50px;
 }
 
-.loginForm{
+.regitsterForm{
 	margin:0 auto;
-	width:340px;
 }
 
 /********输入框**********/
