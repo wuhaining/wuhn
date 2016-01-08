@@ -27,9 +27,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	
   	<!-- 对应的jquery -->
-  	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+  	<script src="<%=basePath%>resources/JavaScript/common/jquery-1.11.3.js"></script>
     <!-- bootstrap核心js -->
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
+    <!-- jquery校验 -->
+	<script src="<%=basePath%>resources/plugIn/jqueryValidation/dist/jquery.validate.js"></script>
+	<script src="<%=basePath%>resources/plugIn/jqueryValidation/dist/localization/messages_zh.js"></script>
+	<script src="<%=basePath%>resources/plugIn/jqueryValidation/dist/additional-methods.js"></script>
+    
     <!--百度分享代码-->
     <script>
 	window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];

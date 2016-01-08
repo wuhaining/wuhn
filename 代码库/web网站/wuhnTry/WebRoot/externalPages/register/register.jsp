@@ -16,7 +16,21 @@
 	<link href="<%=basePath%>resources/css/externalPages/register/register.css" rel="stylesheet">
 	<!-- 公共样式 -->
 	<link rel="stylesheet" href="<%=basePath%>resources/css/common/common.css">
-
+	<!-- jqueryValidate样式 -->
+	<link rel="stylesheet" href="<%=basePath%>resources/plugIn/jqueryValidation/css/validate.css">
+	
+	
+	<!-- jquery自定义-->
+	<script src="<%=basePath%>resources/JavaScript/common/jqueryValidate.js"></script>
+	 
+	
+	<script type="text/javascript">
+	$(function(){
+		/***jqueryValidate校验***/	
+		$("#registerId").validate();
+		 
+	});
+	</script>
   </head>
   
   <body>
@@ -26,28 +40,23 @@
     <jsp:include page="/externalPages/common/navigation.jsp"></jsp:include>
     
     <div class="container text-left regitsterContainer">
-    	<form class="form-horizontal regitsterForm" action="" method="post">
-    	  <div class="form-group has-error has-feedback">
+    	<form id="registerId" class="form-horizontal regitsterForm" action="" method="post">
+    	  <div class="form-group">
 		    <label for="inputNickname" class="col-sm-2 control-label">昵称</label>
 		    <div class="col-sm-6">
 		      <input type="text" name="" class="form-control" id="inputNickname" placeholder="请输入昵称">
-		      <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-  			  <span id="inputError2Status" class="sr-only">(error)</span>
 		    </div>
 		    <div class="col-sm-4">
-		    	第三方登录
+		    	
 		    </div>
 		  </div>
 		  
-		  <div class="form-group has-success has-feedback">
+		  <div class="form-group">
 		    <label for="inputNickname" class="col-sm-2 control-label">电子邮箱</label>
 		    <div class="col-sm-6">
-		      <input type="text" name="" class="form-control" id="inputNickname" placeholder="请输入你的电子邮箱">
-		      <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-  			  <span id="inputSuccess2Status" class="sr-only">(success)</span>
+		      <input type="text" name="" class="form-control JV_Email" id="inputNickname" placeholder="请输入你的电子邮箱">
 		    </div>
 		    <div class="col-sm-4">
-		    	QQ
 		    </div>
 		  </div>
 		  
@@ -57,7 +66,6 @@
 		      <input type="password" class="form-control" id="inputPassword" placeholder="请输入密码">
 		    </div>
 		    <div class="col-sm-4">
-		    	新浪微博
 		    </div>
 		  </div>
 		  <div class="form-group">
