@@ -42,41 +42,41 @@
     <div class="container text-left regitsterContainer">
     	<form id="registerId" class="form-horizontal regitsterForm" action="" method="post">
     	  <div class="form-group">
-		    <label for="inputNickname" class="col-sm-2 control-label">昵称</label>
+		    <label for="inputNickname" class="col-sm-2 col-sm-offset-2 control-label">昵称</label>
 		    <div class="col-sm-6">
 		      <input type="text" name="" class="form-control JV_Required" id="inputNickname" placeholder="请输入昵称">
 		    </div>
-		    <div class="col-sm-4">
+		    <div class="col-sm-2">
 		    	
 		    </div>
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="inputEmail" class="col-sm-2 control-label">电子邮箱</label>
+		    <label for="inputEmail" class="col-sm-2 col-sm-offset-2 control-label">电子邮箱</label>
 		    <div class="col-sm-6">
 		      <input type="text" name="" class="form-control JV_Required JV_Email" id="inputEmail" placeholder="请输入你的电子邮箱">
 		    </div>
-		    <div class="col-sm-4">
+		    <div class="col-sm-2">
 		    </div>
 		  </div>
 		  
 		  <div class="form-group">
-		    <label for="inputPassword" class="col-sm-2 control-label">密码</label>
+		    <label for="inputPassword" class="col-sm-2 col-sm-offset-2 control-label">密码</label>
 		    <div class="col-sm-6">
 		      <input type="password" class="form-control JV_Required JV_Password" id="inputPassword" placeholder="请输入密码">
 		    </div>
-		    <div class="col-sm-4">
+		    <div class="col-sm-2">
 		    </div>
 		  </div>
 		  <div class="form-group">
-		    <label for="confirmPassword" class="col-sm-2 control-label">确认密码</label>
+		    <label for="confirmPassword" class="col-sm-2 col-sm-offset-2 control-label">确认密码</label>
 		    <div class="col-sm-6">
 		      <input type="password" class="form-control JV_Required JV_ConfirmPassword" id="confirmPassword" placeholder="请再一次输入密码">
 		    </div>
 		  </div>
 		  
 		  <div class="form-group">
-		    <div class="col-sm-offset-2 col-sm-6">
+		    <div class="col-sm-offset-4 col-sm-6">
 		      <button type="button" class="btn btn-info btn-block">注册</button>
 		    </div>
 		  </div>
