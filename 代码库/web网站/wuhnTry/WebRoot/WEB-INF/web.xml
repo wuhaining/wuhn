@@ -10,7 +10,7 @@
   <!-- Spring应用上下文， 理解层次化的ApplicationContext -->
   <context-param>
  		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:applicationContext.xml</param-value><!--也可以放在 /WEB-INF/applicationContext.xml  -->
+		<param-value>classpath:spring-mybatis.xml</param-value><!--也可以放在 /WEB-INF/applicationContext.xml  -->
   </context-param>
   
   <!-- DispatcherServlet, Spring MVC的核心 -->

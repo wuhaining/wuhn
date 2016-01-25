@@ -40,7 +40,7 @@
     <jsp:include page="/externalPages/common/navigation.jsp"></jsp:include>
     
     <div class="container text-left regitsterContainer">
-    	<form id="registerId" class="form-horizontal regitsterForm" action="" method="post">
+    	<form id="registerId" class="form-horizontal regitsterForm" action="<%=basePath%>" method="post">
     	  <div class="form-group">
 		    <label for="inputNickname" class="col-sm-2 col-sm-offset-2 control-label">昵称</label>
 		    <div class="col-sm-6">
